@@ -6,13 +6,13 @@ var validateEmail = function(email) {
     return re.test(email);
 };
 
-mongoose.connection.collection('contactdatas').dropIndex('eMail_1', function(err, result) {
-    if (err) {
-        console.log('Error in dropping index:', err);
-    } else {
-        console.log('Unique index on `eMail` field dropped successfully');
-    }
-});
+// mongoose.connection.collection('contactdatas').dropIndex('eMail_1', function(err, result) {
+//     if (err) {
+//         console.log('Error in dropping index:', err);
+//     } else {
+//         console.log('Unique index on `eMail` field dropped successfully');
+//     }
+// });
 const FormSchema = mongoose.Schema({
     fName: {
         type: String,
