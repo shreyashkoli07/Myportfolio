@@ -1,18 +1,12 @@
 const mongoose = require('mongoose');
 
-// // Email validation function
+// Email validation function (if you choose to keep it)
 var validateEmail = function(email) {
     var re = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
     return re.test(email);
 };
 
-// mongoose.connection.collection('contactdatas').dropIndex('eMail_1', function(err, result) {
-//     if (err) {
-//         console.log('Error in dropping index:', err);
-//     } else {
-//         console.log('Unique index on `eMail` field dropped successfully');
-//     }
-// });
+// Schema Definition
 const FormSchema = mongoose.Schema({
     fName: {
         type: String,
@@ -28,13 +22,14 @@ const FormSchema = mongoose.Schema({
         lowercase: true,
         required: 'Email address is required',
         validate: [validateEmail, 'Please fill a valid email address'],
-        match: [/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, 'Please fill a valid email address']
+        // Alternatively, you can use just this match property:
+        // match: [/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, 'Please fill a valid email address']
     },
     mobile: {
         type: Number,
         validate: {
             validator: function(v) {
-                return /^\d{10}$/.test(v); // Assuming mobile numbers are 10 digits
+                return /^\d{10}$/.test(v); // Adjust if you want internationalization
             },
             message: props => `${props.value} is not a valid mobile number!`
         },
@@ -46,4 +41,14 @@ const FormSchema = mongoose.Schema({
     }
 });
 
+// Export the model
 module.exports = mongoose.model("contactData", FormSchema);
+
+// Uncomment the code below to drop the unique index if needed
+// mongoose.connection.collection('contactdatas').dropIndex('eMail_1', function(err, result) {
+//     if (err) {
+//         console.log('Error in dropping index:', err);
+//     } else {
+//         console.log('Unique index on `eMail` field dropped successfully');
+//     }
+// });
