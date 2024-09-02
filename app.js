@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 const routes = require('./routers/FormRoutes');
 
 const app = express();
-const port = process.env.PORT || 5000;
+const port = 5000;
 
 //username 
 // shreyashkoli4141
@@ -18,9 +18,9 @@ app.use(express.json());
 app.use('/thankyou', routes);
 
 // Database Connection
-mongoose.connect('mongodb+srv://shreyashkoli4141:<db_password>@contactdetails.zbirm.mongodb.net/?retryWrites=true&w=majority&appName=ContactDetails', {
-    useNewUrlParser: true,
-    bufferTimeoutMS: 20000
+mongoose.connect('mongodb+srv://shreyashkoli4141:K2CwIrr4F3AxY4hM@contactdetails.zbirm.mongodb.net/?retryWrites=true&w=majority&appName=ContactDetails', {
+    // useNewUrlParser: true,
+    // useUnifiedTopology: true,
 })
     .then(() => {
         console.log("Database Connected Successfully");
