@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 const routes = require('./routers/FormRoutes');
 
 const app = express();
-const port = 5000;
+const port = process.env.PORT || 5000;
 
 //username 
 // shreyashkoli4141
