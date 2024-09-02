@@ -6,22 +6,13 @@ const routes = require('./routers/FormRoutes');
 const app = express();
 const port = process.env.PORT || 5000;
 
-//username 
-// shreyashkoli4141
-
-// password
-// K2CwIrr4F3AxY4hM
-
 // Middlewares
 app.use(cors());
 app.use(express.json());
 app.use('/thankyou', routes);
 
 // Database Connection
-mongoose.connect('mongodb+srv://shreyashkoli4141:K2CwIrr4F3AxY4hM@contactdetails.zbirm.mongodb.net/?retryWrites=true&w=majority&appName=ContactDetails', {
-    // useNewUrlParser: true,
-    // useUnifiedTopology: true,
-})
+mongoose.connect(process.env.MONGODB_URI || 'mongodb+srv://shreyashkoli4141:K2CwIrr4F3AxY4hM@contactdetails.zbirm.mongodb.net/?retryWrites=true&w=majority&appName=ContactDetails')
     .then(() => {
         console.log("Database Connected Successfully");
         // Start server after successful DB connection
