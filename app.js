@@ -18,9 +18,9 @@ app.use(express.json());
 app.use('/thankyou', routes);
 
 // Database Connection
-mongoose.connect('mongodb+srv://shreyashkoli4141:K2CwIrr4F3AxY4hM@contactdetails.zbirm.mongodb.net/?retryWrites=true&w=majority&appName=ContactDetails', {
+mongoose.connect('mongodb+srv://shreyashkoli4141:<db_password>@contactdetails.zbirm.mongodb.net/?retryWrites=true&w=majority&appName=ContactDetails', {
     useNewUrlParser: true,
-    useUnifiedTopology: true,
+    bufferTimeoutMS: 20000
 })
     .then(() => {
         console.log("Database Connected Successfully");
